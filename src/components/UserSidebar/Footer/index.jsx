@@ -1,8 +1,9 @@
 "use client";
 
-import { AudioFilled, SettingFilled, SoundFilled } from "@ant-design/icons";
-import { Tooltip } from "antd";
 import Image from "next/image";
+
+import { Tooltip } from "antd";
+import { AudioFilled, SettingFilled, SoundFilled } from "@ant-design/icons";
 
 export default function FooterUserSidebar() {
   return (

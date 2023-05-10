@@ -1,7 +1,8 @@
 "use client";
 
-import SidebarItem from "@/components/ServersSidebar/SidebarItem";
 import { useState } from "react";
+
+import SidebarItem from "@/components/ServersSidebar/SidebarItem";
 
 export default function MainSidebar() {
   const [selectedItemId, setSelectedItemId] = useState(0);

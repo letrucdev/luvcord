@@ -1,9 +1,9 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
 import { Tooltip, Dropdown } from "antd";
 import { MessageFilled, MoreOutlined } from "@ant-design/icons";
-import React from "react";
 
 export default function ItemUser({ selected = false }) {
   return (

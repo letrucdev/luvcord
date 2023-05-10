@@ -1,8 +1,9 @@
 "use client";
 
-import { HomeFilled, PlusOutlined } from "@ant-design/icons";
-import { Tooltip } from "antd";
 import Image from "next/image";
+
+import { Tooltip } from "antd";
+import { HomeFilled, PlusOutlined } from "@ant-design/icons";
 
 export default function SidebarItem({
   selected = false,

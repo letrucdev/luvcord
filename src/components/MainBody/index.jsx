@@ -1,13 +1,13 @@
 "use client";
+import { useState, useEffect, useRef } from "react";
+import { SearchOutlined, CloseOutlined } from "@ant-design/icons";
 
 import HeaderMainBody from "@/components/HeaderMainBody";
 import ItemUser from "@/components/MainBody/ItemUser";
 
-import { SearchOutlined, CloseOutlined } from "@ant-design/icons";
 
-import { useState, useEffect, useRef } from "react";
 
-export default function MainBody({ chatId }) {
+export default function MainBody() {
   const [searchInput, setSearchInput] = useState("");
   const [searchIcon, setSearchIcon] = useState(<SearchOutlined />);
 
@@ -55,7 +55,6 @@ export default function MainBody({ chatId }) {
             {searchIcon}
           </div>
         </div>
-
         {/* End Input Search */}
 
         {/* Users Count */}

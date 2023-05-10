@@ -1,15 +1,15 @@
-import { CloseOutlined } from "@ant-design/icons";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function ItemUser({ user, path, selected, selectItem }) {
+import { CloseOutlined } from "@ant-design/icons";
+
+export default function ItemUser({ user, path, selected }) {
   return (
     <Link href={path}>
       <div
         className={`${
           selected && "bg-[#363636]"
         } flex mx-3 p-2 items-center hover:bg-[#363636] cursor-pointer duration-300 rounded-md group gap-2`}
-        /* onClick={() => selectItem()} */
       >
         <div className="flex items-center justify-center min-w-[32px] min-h-[32px]">
           <Image
