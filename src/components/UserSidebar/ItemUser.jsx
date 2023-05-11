@@ -11,15 +11,19 @@ export default function ItemUser({ user, path, selected }) {
           selected && "bg-[#363636]"
         } flex mx-3 p-2 items-center hover:bg-[#363636] cursor-pointer duration-300 rounded-md group gap-2`}
       >
-        <div className="flex items-center justify-center min-w-[32px] min-h-[32px]">
-          <Image
-            className="rounded-3xl border-none"
-            src={user?.avatar}
-            width={32}
-            height={32}
-            alt="User Avatar"
-          />
+        <div className="flex relative">
+          <div className="flex items-center justify-center min-w-[32px] min-h-[32px]">
+            <Image
+              className="rounded-3xl border-none"
+              src={user?.avatar}
+              width={32}
+              height={32}
+              alt="User Avatar"
+            />
+          </div>
+          <div className="w-2 h-2 bg-green-400 rounded-full absolute bottom-0 right-0"></div>
         </div>
+
         <div className="flex flex-col w-[125px] grow">
           <p
             className={`${

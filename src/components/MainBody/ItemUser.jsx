@@ -10,17 +10,20 @@ export default function ItemUser({ selected = false }) {
     <div className="flex rounded-md gap-2 hover:bg-[#383838] cursor-pointer duration-300 group relative select-none">
       <div className="flex items-center py-2 w-full border-t-2 mx-2 border-t-[#383838]">
         {/* User */}
-        <div className="flex gap-2 grow">
-          <div className="flex items-center justify-center min-w-[32px] min-h-[32px]">
-            <Image
-              className="rounded-3xl border-none"
-              src={`https://cdn.discordapp.com/avatars/409219043535355904/5c333b6fd660c08fb2b517a07844d8c4.webp?size=32`}
-              width={32}
-              height={32}
-              alt="User Avatar"
-              quality={100}
-            />
+        <div className="flex gap-2 w-full items-center">
+          <div className="flex relative">
+            <div className="flex items-center justify-center min-w-[32px] min-h-[32px]">
+              <Image
+                className="rounded-3xl border-none"
+                src={`https://cdn.discordapp.com/avatars/409219043535355904/5c333b6fd660c08fb2b517a07844d8c4.webp?size=32`}
+                width={32}
+                height={32}
+                alt="User Avatar"
+              />
+            </div>
+            <div className="w-2 h-2 bg-green-400 rounded-full absolute bottom-0 right-0"></div>
           </div>
+
           <div className="flex flex-col w-[125px] grow">
             <p
               className={`text-slate-200 duration-300 text-ellipsis whitespace-nowrap overflow-hidden`}

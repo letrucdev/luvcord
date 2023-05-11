@@ -60,7 +60,7 @@ export default function UsersList({ title, count, nullTitle }) {
       {/* End Users Count */}
 
       {/* User List */}
-      <div className="overflow-y-auto flex px-4">
+      <div className="overflow-y-auto overflow-x-hidden flex px-4">
         <div className="flex flex-col w-full h-full max-h-full">
           <ItemUser />
           <ItemUser />
