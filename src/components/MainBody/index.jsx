@@ -1,21 +1,51 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { SearchOutlined, CloseOutlined } from "@ant-design/icons";
+import { SearchOutlined, CloseOutlined, UserOutlined } from "@ant-design/icons";
 
-import HeaderMainBody from "@/components/HeaderMainBody";
+import HeaderMainBody from "@/components/Header";
 import ItemUser from "@/components/MainBody/ItemUser";
 
-
-
-export default function MainBody() {
+export default function MainBody({ type = 0 }) {
   const [searchInput, setSearchInput] = useState("");
   const [searchIcon, setSearchIcon] = useState(<SearchOutlined />);
 
   const inputSearchRef = useRef();
 
+  const buttons = [
+    <div className="flex items-center justify-center gap-2 px-2  py-1 bg-[#383838] cursor-pointer rounded-md hover:bg-[#2E2E2E] duration-300">
+      <p>Online</p>
+    </div>,
+    <div className="flex items-center justify-center gap-2 px-2  py-1  cursor-pointer rounded-md hover:bg-[#2E2E2E] duration-300 text-[#a4a4a4]">
+      <p>All</p>
+    </div>,
+    <div className="flex items-center justify-center gap-2 px-2  py-1  cursor-pointer rounded-md hover:bg-[#2E2E2E] duration-300 text-[#a4a4a4]">
+      <p>Pending</p>
+    </div>,
+    <div className="flex items-center justify-center gap-2 px-2  py-1 bg-indigo-500 cursor-pointer rounded-md hover:bg-indigo-700 duration-300 ">
+      <p>Add Friend</p>
+    </div>,
+  ];
+
   const handleClearInput = () => {
     setSearchInput("");
     inputSearchRef.current.focus();
+  };
+
+  const handleHeaderType = (type) => {
+    switch (type) {
+      case 0:
+        return (
+          <HeaderMainBody
+            title={`Friends`}
+            icon={
+              <UserOutlined className="text-center leading-none text-2xl text-[#a4a4a4] group-hover:text-slate-200 duration-300" />
+            }
+            buttons={buttons}
+          />
+        );
+      case 1:
+        return <HeaderMainBody />;
+    }
   };
 
   const handleSearchUser = () => {};
@@ -37,7 +67,7 @@ export default function MainBody() {
 
   return (
     <div className="flex flex-col w-full h-screen">
-      <HeaderMainBody />
+      {handleHeaderType(type)}
       <div className="flex flex-col overflow-hidden w-full relative gap-4">
         {/* Input Search  */}
         <div className="flex justify-center items-center px-4 mt-3">

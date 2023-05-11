@@ -5,6 +5,8 @@ import Image from "next/image";
 import { Tooltip } from "antd";
 import { AudioFilled, SettingFilled, SoundFilled } from "@ant-design/icons";
 
+import ControlButton from "@/components/UserSidebar/Footer/ControlButton";
+
 export default function FooterUserSidebar() {
   return (
     <div className="flex w-full p-1 bg-[#232323] grow-0 justify-center items-center gap-2">
@@ -30,23 +32,18 @@ export default function FooterUserSidebar() {
       </div>
 
       <div className="flex justify-center items-center gap-1">
-        <Tooltip title={`Mute`} placement="top">
-          <div className="flex justify-center items-center  rounded-md hover:bg-[#333333] cursor-pointer duration-300">
-            <AudioFilled className="text-white  p-2" />
-          </div>
-        </Tooltip>
-
-        <Tooltip title={`Deafen`} placement="top">
-          <div className="flex justify-center items-center  rounded-md hover:bg-[#333333] cursor-pointer duration-300">
-            <SoundFilled className="text-white  p-2" />
-          </div>
-        </Tooltip>
-
-        <Tooltip title={`User Settings`} placement="top">
-          <div className="flex justify-center items-center  rounded-md hover:bg-[#333333] cursor-pointer duration-300">
-            <SettingFilled className="text-white  p-2" />
-          </div>
-        </Tooltip>
+        <ControlButton
+          title={`Mute`}
+          icon={<AudioFilled className="text-white  p-2" />}
+        />
+        <ControlButton
+          title={`Deafen`}
+          icon={<SoundFilled className="text-white  p-2" />}
+        />
+        <ControlButton
+          title={`User Settings`}
+          icon={<SettingFilled className="text-white  p-2" />}
+        />
       </div>
     </div>
   );

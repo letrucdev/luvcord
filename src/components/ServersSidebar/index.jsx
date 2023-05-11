@@ -7,7 +7,7 @@ import SidebarItem from "@/components/ServersSidebar/SidebarItem";
 export default function MainSidebar() {
   const [selectedItemId, setSelectedItemId] = useState(0);
   return (
-    <nav className="flex flex-col bg-[#1E1E1E] min-w-[72px] relative pt-3 gap-2 items-center">
+    <nav className="flex flex-col bg-[#1E1E1E] min-w-[72px] relative pt-3 gap-2 items-center overflow-hidden">
       <SidebarItem
         selected={selectedItemId === 0}
         type={1}

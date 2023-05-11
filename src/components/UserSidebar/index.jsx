@@ -43,9 +43,9 @@ export default function UserSidebar({ path }) {
     <div className="flex flex-col w-60 min-w-[240px] overflow-hidden bg-[#272727] h-full">
       <div className="flex flex-col h-full overflow-hidden relative">
         {/* Search btn */}
-        <div className="flex h-12 items-center justify-center shadow-md w-full px-3 mb-2">
-          <button className="bg-[#1E1E1E] w-full text-sm font-light text-[#474747] rounded-md leading-loose">
-            Search or start chatting
+        <div className="flex h-12 items-center shadow-md w-full px-3 mb-2">
+          <button className="bg-[#1E1E1E] w-full text-sm font-light text-[#474747] rounded-md leading-loose text-left px-2">
+            Find or start a conversation
           </button>
         </div>
         {/* End Search btn */}
@@ -56,7 +56,7 @@ export default function UserSidebar({ path }) {
             icon={
               <UserOutlined className="text-center leading-none text-2xl text-[#a4a4a4] group-hover:text-slate-200 duration-300" />
             }
-            selected={path?.channelId[0] === "%40me" && !path?.channelId[1]}
+            selected={path[2] === "@me" && !path[3]}
             title={"Friends"}
             path={`/channels/@me`}
           />
@@ -64,9 +64,9 @@ export default function UserSidebar({ path }) {
             icon={
               <SketchOutlined className="text-center leading-none text-2xl text-[#a4a4a4] group-hover:text-slate-200 duration-300" />
             }
-            selected={path?.channelId[0] === "premium"}
+            selected={path[1] === "premium"}
             title={"Premium"}
-            path={`/channels/premium`}
+            path={`/premium`}
           />
         </div>
         {/* End Items Navigate */}
@@ -86,17 +86,17 @@ export default function UserSidebar({ path }) {
         <div className="flex flex-col overflow-hidden grow gap-1">
           <ItemUser
             user={user}
-            selected={path?.channelId[1] === user.id}
+            selected={path[3] === user.id}
             path={`/channels/@me/${user.id}`}
           />
           <ItemUser
             user={user2}
-            selected={path?.channelId[1] === user2.id}
+            selected={path[3] === user2.id}
             path={`/channels/@me/${user2.id}`}
           />
           <ItemUser
             user={user3}
-            selected={path?.channelId[1] === user3.id}
+            selected={path[3] === user3.id}
             path={`/channels/@me/${user3.id}`}
           />
         </div>
