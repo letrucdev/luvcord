@@ -18,7 +18,6 @@ export default function ItemUser({ user, path, selected }) {
             width={32}
             height={32}
             alt="User Avatar"
-            quality={100}
           />
         </div>
         <div className="flex flex-col w-[125px] grow">

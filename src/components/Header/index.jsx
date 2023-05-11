@@ -8,9 +8,17 @@ export default function Header({
   icon,
   more = true,
   buttons = [],
+  buttonPosition = "left",
 }) {
+  const setButtonPosition = () => {
+    switch (buttonPosition) {
+      case "right":
+        return "justify-end";
+    }
+  };
+
   return (
-    <header className="flex shadow-md w-full px-3  items-center min-h-[48px] bg-transparent gap-3 text-sm">
+    <header className="flex shadow-md w-full px-3  items-center min-h-[48px] bg-transparent gap-3 text-sm select-none">
       <div className="flex items-center justify-center gap-2">
         {icon}
         <p>{title}</p>
@@ -20,7 +28,9 @@ export default function Header({
         <div className="w-[1px] h-6 bg-[#a4a4a4] opacity-40"></div>
       )}
 
-      <div className="flex items-center w-full gap-2 overflow-x-hidden overflow-hidden">
+      <div
+        className={`flex items-center grow gap-2 overflow-hidden ${setButtonPosition()}`}
+      >
         {buttons?.map((button) => {
           return button;
         })}
