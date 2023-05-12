@@ -63,14 +63,6 @@ export default function ChannelPage() {
     </div>,
   ];
 
-  const handleRoute = () => {
-    switch (pathname[2]) {
-      case "@me":
-        <MainBody />;
-        break;
-    }
-  };
-
   return (
     <div className="flex h-screen w-full bg-[#333333] text-white overflow-hidden">
       {(pathname[2] === "@me") & !pathname[3] ? (

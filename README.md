@@ -11,5 +11,6 @@ NextJs, AntDesign, Tailwindcss, Socket.IO, PeerJs
 ## Project History
 
 09/05/2023 - Begin <br>
-10/05/2023 - Build the layout for the project
+10/05/2023 - Build the layout for the project <br>
+12/05/2023 - Direct Messsage UI <br>
 .....

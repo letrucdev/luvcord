@@ -9,7 +9,7 @@ import {
   CustomerServiceFilled,
 } from "@ant-design/icons";
 
-import ControlButton from "@/components/UserSidebar/Footer/ControlButton";
+import ControlButton from "@/components/MenuSidebar/Footer/ControlButton";
 
 export default function FooterUserSidebar() {
   return (
