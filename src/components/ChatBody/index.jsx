@@ -43,18 +43,15 @@ export default function ChatBody({ headerTitle, icon, buttons }) {
               content="Lorem ipsum dolor sit amet consectetur adipisicing eli"
             />
             <Message
+              reply={true}
               content={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sapiente explicabo expedita labore facilis dolorum sed quam odio dignissimos, repudiandae magnam eligendi ad odit ipsa fuga. Harum et earum totam?`}
             />
             <Message
+              reply={true}
               content={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sapiente explicabo expedita labore facilis dolorum sed quam odio dignissimos, repudiandae magnam eligendi ad odit ipsa fuga. Harum et earum totam?`}
             />
             <Message
-              content={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sapiente explicabo expedita labore facilis dolorum sed quam odio dignissimos, repudiandae magnam eligendi ad odit ipsa fuga. Harum et earum totam?`}
-            />
-            <Message
-              content={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sapiente explicabo expedita labore facilis dolorum sed quam odio dignissimos, repudiandae magnam eligendi ad odit ipsa fuga. Harum et earum totam?`}
-            />
-            <Message
+              reply={true}
               content={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sapiente explicabo expedita labore facilis dolorum sed quam odio dignissimos, repudiandae magnam eligendi ad odit ipsa fuga. Harum et earum totam?`}
             />
           </ListMessage>
@@ -72,6 +69,7 @@ export default function ChatBody({ headerTitle, icon, buttons }) {
             </div>
           </div>
           {/* End Input Message */}
+          
         </div>
         {context?.isShowMembers & (context?.membersList?.length > 0) ? (
           <div
