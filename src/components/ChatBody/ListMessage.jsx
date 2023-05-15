@@ -10,8 +10,8 @@ export default function ListMessage({ children }) {
   }, []);
 
   return (
-    <div className="flex min-h-0 h-full">
-      <div className="overflow-y-scroll">
+    <div className="flex min-h-0 w-full h-full">
+      <div className="overflow-y-scroll w-full">
         <div className="flex flex-col justify-end min-h-full ">
           <ol className="overflow-hidden">
             
