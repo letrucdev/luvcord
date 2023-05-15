@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { createContext, useState, useEffect } from "react";
 
 export const AppContext = createContext();
@@ -10,14 +11,21 @@ export default function AppProvider({ children }) {
     2: { showMembers: true, isServer: true }, // Server chat
   };
 
+  const path = usePathname().split("/");
+
   const [headerItemSelect, setHeaderItemSelect] = useState("online");
-  const [chatType, setChatType] = useState(chatTypes[1]);
+  const [MenuSidebarItems, setMenuSidebarItems] = useState([]);
+  const [membersList, setMembersList] = useState([]);
+  const [isShowMembers, setIsShowMembers] = useState(true);
 
   const value = {
     headerItemSelect,
-    chatType,
-    chatTypes,
-    setChatType,
+    membersList,
+    isShowMembers,
+    MenuSidebarItems,
+    setMembersList,
+    setIsShowMembers,
+    setMenuSidebarItems,
     setHeaderItemSelect,
   };
 

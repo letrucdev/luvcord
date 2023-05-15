@@ -6,7 +6,7 @@ LUVCORD is Discord Clone Project By letruc
 
 ## Technical Details
 
-NextJs, AntDesign, Tailwindcss, Socket.IO, PeerJs
+NextJs, AntDesign, Tailwindcss, WebSocket, WebRTC
 
 ## Project History
 

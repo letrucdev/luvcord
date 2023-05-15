@@ -1,4 +1,4 @@
-import { useRef, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 
 import { SendOutlined, PlusCircleFilled } from "@ant-design/icons";
 
@@ -8,14 +8,10 @@ import HeaderMainBody from "@/components/Header";
 import Message from "@/components/Message";
 import Member from "@/components/ChatBody/Member";
 import MemberGroup from "@/components/ChatBody/MemberGroup";
+import ListMessage from "@/components/ChatBody/ListMessage";
 
 export default function ChatBody({ headerTitle, icon, buttons }) {
-  const bottomChatRef = useRef();
   const context = useContext(AppContext);
-
-  useEffect(() => {
-    bottomChatRef.current.scrollIntoView({ behavior: "smooth" });
-  }, []);
 
   return (
     <div className="flex flex-col w-full h-screen">
@@ -23,9 +19,10 @@ export default function ChatBody({ headerTitle, icon, buttons }) {
       <HeaderMainBody title={headerTitle} icon={icon} />
 
       {/* Main Chat */}
-      <div className="flex w-full h-full relative min-w-[560px]">
-        <div className="flex flex-col w-full h-full relative overflow-hidden">
-          <div className="flex flex-col w-full grow overflow-y-scroll overflow-hidden relative my-3">
+      <div className="flex w-full relative min-w-[560px] overflow-hidden h-full">
+        <div className="flex flex-col w-full h-full overflow-hidden">
+          {/* List Message */}
+          <ListMessage>
             <Message
               content={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sapiente explicabo expedita labore facilis dolorum sed quam odio dignissimos, repudiandae magnam eligendi ad odit ipsa fuga. Harum et earum totam?`}
             />
@@ -48,11 +45,19 @@ export default function ChatBody({ headerTitle, icon, buttons }) {
             <Message
               content={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sapiente explicabo expedita labore facilis dolorum sed quam odio dignissimos, repudiandae magnam eligendi ad odit ipsa fuga. Harum et earum totam?`}
             />
-            <div
-              className="w-full py-2 bg-transparent"
-              ref={bottomChatRef}
-            ></div>
-          </div>
+            <Message
+              content={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sapiente explicabo expedita labore facilis dolorum sed quam odio dignissimos, repudiandae magnam eligendi ad odit ipsa fuga. Harum et earum totam?`}
+            />
+            <Message
+              content={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sapiente explicabo expedita labore facilis dolorum sed quam odio dignissimos, repudiandae magnam eligendi ad odit ipsa fuga. Harum et earum totam?`}
+            />
+            <Message
+              content={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sapiente explicabo expedita labore facilis dolorum sed quam odio dignissimos, repudiandae magnam eligendi ad odit ipsa fuga. Harum et earum totam?`}
+            />
+            <Message
+              content={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sapiente explicabo expedita labore facilis dolorum sed quam odio dignissimos, repudiandae magnam eligendi ad odit ipsa fuga. Harum et earum totam?`}
+            />
+          </ListMessage>
 
           {/* Input Message */}
           <div className="flex flex-col w-full px-3">
@@ -68,8 +73,7 @@ export default function ChatBody({ headerTitle, icon, buttons }) {
           </div>
           {/* End Input Message */}
         </div>
-
-        {context.chatType.showMembers && (
+        {context?.isShowMembers & (context?.membersList?.length > 0) ? (
           <div
             className={`flex flex-col overflow-y-scroll overflow-x-hidden bg-[#272727] w-60 min-w-[240px]`}
           >
@@ -80,6 +84,8 @@ export default function ChatBody({ headerTitle, icon, buttons }) {
             <Member name="letruc2" status="Developer Java" isOnline={false} />
             <Member name="letruc3" status="Developer C++" isOnline={false} />
           </div>
+        ) : (
+          ""
         )}
       </div>
     </div>

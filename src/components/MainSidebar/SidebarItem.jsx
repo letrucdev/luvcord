@@ -20,10 +20,7 @@ export default function SidebarItem({
   const context = useContext(AppContext);
 
   return (
-    <div
-      className="flex relative justify-center items-center w-full transition-all duration-300 select-none group cursor-pointer"
-      onClick={() => context.setChatType(context.chatTypes[type])}
-    >
+    <div className="flex relative justify-center items-center w-full transition-all duration-300 select-none group cursor-pointer">
       <div
         className={`duration-300 bg-white absolute w-1 h-full rounded-r-md left-0 group-hover:opacity-100 group-hover:scale-50  ${
           !selected ? "opacity-0 scale-0" : "opacity-100"
@@ -39,6 +36,7 @@ export default function SidebarItem({
                     className={`${
                       selected ? "bg-indigo-600 rounded-2xl" : "rounded-3xl"
                     } transition-all duration-300 flex justify-center items-center text-center w-12 h-12 hover:rounded-2xl cursor-pointer  bg-[#232323] hover:bg-indigo-600 select-none`}
+                    onClick={() => context.setMenuSidebarItems([])}
                   >
                     <HomeFilled className="text-white text-xl mb-1" />
                   </div>
@@ -63,6 +61,10 @@ export default function SidebarItem({
                     className={`${
                       selected ? "rounded-2xl" : "rounded-3xl"
                     } cursor-pointer duration-300 transition-all hover:rounded-2xl select-none`}
+                    onClick={() => {
+                      context.setMenuSidebarItems([123]);
+                      context.setMembersList([123])
+                    }}
                   />
                 );
             }

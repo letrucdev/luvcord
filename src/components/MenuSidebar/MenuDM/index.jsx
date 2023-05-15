@@ -72,6 +72,7 @@ export default function MenuDM({ path }) {
           user={user}
           selected={path[3] === user.id}
           path={`/channels/@me/${user.id}`}
+          
         />
         <ItemUser
           user={user2}

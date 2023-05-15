@@ -1,6 +1,7 @@
 "use client";
 import { useContext } from "react";
 import { usePathname } from "next/navigation";
+import { useSelectedLayoutSegment } from "next/navigation";
 
 import { AppContext } from "@/context/AppContext";
 import MainBody from "@/components/MainBody";
@@ -65,16 +66,15 @@ export default function ChannelPage() {
 
   return (
     <div className="flex h-screen w-full bg-[#333333] text-white overflow-hidden">
-      {(pathname[2] === "@me") & !pathname[3] ? (
-        <MainBody buttons={buttons} type={0} />
-      ) : (
-        /* <MainBody type={1} headerTitle={pathname[3]} buttons={buttons} /> */
+      {pathname[2] !== "@me" ? (
         <ChatBody
           headerTitle={pathname[3]}
           icon={
             <MessageOutlined className="text-center leading-none text-2xl text-[#a4a4a4] group-hover:text-slate-200 duration-300" />
           }
         />
+      ) : (
+        <MainBody buttons={buttons} type={0} />
       )}
     </div>
   );

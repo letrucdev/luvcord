@@ -12,7 +12,7 @@ import TextChannel from "@/components/MenuSidebar/MenuServer/TextChannel";
 import VoiceChannel from "@/components/MenuSidebar/MenuServer/VoiceChannel";
 import Category from "@/components/MenuSidebar/MenuServer/Category";
 
-export default function MenuServer({ path }) {
+export default function MenuServer() {
   return (
     <div className="flex flex-col overflow-x-hidden overflow-y-auto h-full">
       <TextChannel name={"welcome"} />
