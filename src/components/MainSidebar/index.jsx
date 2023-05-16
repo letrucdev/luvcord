@@ -6,7 +6,10 @@ import SidebarItem from "@/components/MainSidebar/SidebarItem";
 
 export default function MainSidebar({ path }) {
   return (
-    <nav className="flex flex-col bg-[#1E1E1E] min-w-[72px] relative pt-3 gap-2 items-center overflow-hidden">
+    <nav
+      className="flex flex-col bg-[#1E1E1E] min-w-[72px] relative pt-3 gap-2 items-center overflow-hidden"
+      onContextMenu={(e) => e.preventDefault()}
+    >
       <SidebarItem
         path={"/channels/@me"}
         selected={path[2] === "@me"}

@@ -1,8 +1,8 @@
 import { Tooltip } from "antd";
 import { UserOutlined, SketchOutlined, PlusOutlined } from "@ant-design/icons";
 
-import ItemNavigate from "@/components/MenuSidebar/ItemNavigate";
-import ItemUser from "@/components/MenuSidebar/ItemUser";
+import ItemNavigate from "@/components/MenuSidebar/MenuDM/ItemNavigate";
+import ItemUser from "@/components/MenuSidebar/MenuDM/ItemUser";
 
 export default function MenuDM({ path }) {
   function UserContructor(id, name, avatar, status) {
@@ -72,7 +72,6 @@ export default function MenuDM({ path }) {
           user={user}
           selected={path[3] === user.id}
           path={`/channels/@me/${user.id}`}
-          
         />
         <ItemUser
           user={user2}

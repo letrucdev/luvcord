@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useContext } from "react";
 
 import { SendOutlined, PlusCircleFilled } from "@ant-design/icons";
@@ -69,22 +71,21 @@ export default function ChatBody({ headerTitle, icon, buttons }) {
             </div>
           </div>
           {/* End Input Message */}
-          
         </div>
         {context?.isShowMembers & (context?.membersList?.length > 0) ? (
           <div
             className={`flex flex-col overflow-y-scroll overflow-x-hidden bg-[#272727] w-60 min-w-[240px]`}
           >
-            <MemberGroup title={"Online"} groupMemberCount={1} />
-            <Member name="letruc" status="Developer JS" isOnline={true} />
+            <MemberGroup title={"Online"}>
+              <Member name="letruc" status="Developer JS" isOnline={true} />
+            </MemberGroup>
 
-            <MemberGroup title={"Offline"} groupMemberCount={2} />
-            <Member name="letruc2" status="Developer Java" isOnline={false} />
-            <Member name="letruc3" status="Developer C++" isOnline={false} />
+            <MemberGroup title={"Offline"}>
+              <Member name="letruc2" status="Developer Java" isOnline={false} />
+              <Member name="letruc3" status="Developer C++" isOnline={false} />
+            </MemberGroup>
           </div>
-        ) : (
-          ""
-        )}
+        ): null}
       </div>
     </div>
   );
