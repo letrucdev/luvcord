@@ -9,8 +9,6 @@ import ChatBody from "@/components/ChatBody";
 
 export default function Page() {
   const pathname = usePathname().split("/");
-
-
   return (
     <ChatBody
       headerTitle={pathname[3]}

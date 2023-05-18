@@ -9,10 +9,8 @@ import ChatBody from "@/components/ChatBody";
 import { MessageOutlined } from "@ant-design/icons";
 
 export default memo(function ChannelPage() {
-
   const context = useContext(AppContext);
   const pathname = usePathname().split("/");
-
   const buttons = [
     <div
       key={1}

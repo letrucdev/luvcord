@@ -1,12 +1,10 @@
 import { Fragment, useContext, useRef, useEffect, useState, memo } from "react";
-
 import { AppContext } from "@/context/AppContext";
 import ContextItem from "@/components/ContextMenu/ContextItem";
 
 export default memo(function ContextMenu() {
   const MenuRef = useRef();
   const { contextMenu } = useContext(AppContext);
-
   const [posX, setPosX] = useState();
   const [posY, setPosY] = useState();
 
@@ -19,11 +17,9 @@ export default memo(function ContextMenu() {
 
     let adjustedX = contextMenu.positionX;
     let adjustedY = contextMenu.positionY;
-
     if (contextMenu.positionX + menuWidth > windowWidth) {
       adjustedX = windowWidth - menuWidth;
     }
-
     if (contextMenu.positionY + menuHeight > windowHeight) {
       adjustedY = windowHeight - menuHeight;
     }
