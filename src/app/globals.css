@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  padding: 0;
+  margin: 0;
+}
+
 /* width */
 ::-webkit-scrollbar {
   transition: all 0.3s ease-in-out;
@@ -25,4 +30,11 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+.ant-dropdown-menu-item,
+.ant-dropdown-menu-submenu,
+.ant-dropdown-menu-submenu-title {
+  padding: 0 !important;
+  margin: 0 !important;
 }

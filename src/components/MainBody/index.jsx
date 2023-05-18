@@ -1,5 +1,5 @@
 "use client";
-import { useContext } from "react";
+import { useContext, useEffect, memo } from "react";
 import { UserOutlined, MessageFilled } from "@ant-design/icons";
 
 import HeaderMainBody from "@/components/Header";
@@ -8,10 +8,8 @@ import UsersList from "@/components/UsersList";
 
 import { AppContext } from "@/context/AppContext";
 
-export default function MainBody({ type = 0, headerTitle, buttons }) {
+export default memo(function MainBody({ type = 0, headerTitle, buttons }) {
   const context = useContext(AppContext);
- 
-
   const handleHeaderType = (type) => {
     switch (type) {
       case 0:
@@ -78,4 +76,4 @@ export default function MainBody({ type = 0, headerTitle, buttons }) {
       {handleSelectMenu()}
     </div>
   );
-}
+});

@@ -23,9 +23,18 @@ module.exports = {
             transform: "translateX(0)",
           },
         },
+        showContextMenu: {
+          "0%": {
+            opacity: 0,
+          },
+          "100%": {
+            opacity: 1,
+          },
+        },
       },
       animation: {
         slide_message: "slide_message 0.3s ease-in-out",
+        showContextMenu: "showContextMenu 0.2s ease-in-out",
       },
     },
   },

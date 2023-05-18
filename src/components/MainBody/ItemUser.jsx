@@ -1,14 +1,33 @@
 "use client";
 
-import React from "react";
+import React, { useContext, memo } from "react";
 import Image from "next/image";
+
+import { AppContext } from "@/context/AppContext";
+import { dmContextMenu } from "@/components/ContextMenu/ContextItemList";
+
 import { Tooltip, Dropdown } from "antd";
 import { MessageFilled, MoreOutlined } from "@ant-design/icons";
 
-export default function ItemUser({ selected = false }) {
+export default memo(function ItemUser() {
+  const { setContextMenu } = useContext(AppContext);
+  const onRightClick = (e) => {
+    e.preventDefault();
+    const { pageX, pageY } = e;
+    setContextMenu({
+      isShow: true,
+      positionX: pageX,
+      positionY: pageY,
+      itemList: dmContextMenu,
+    });
+  };
+
   return (
     <div className="flex rounded-md gap-2 hover:bg-[#383838] cursor-pointer duration-300 group relative select-none">
-      <div className="flex items-center py-2 w-full border-t-2 mx-2 border-t-[#383838]">
+      <div
+        className="flex items-center py-2 w-full border-t-2 mx-2 border-t-[#383838]"
+        onContextMenu={onRightClick}
+      >
         {/* User */}
         <div className="flex gap-2 w-full items-center">
           <div className="flex relative">
@@ -47,11 +66,15 @@ export default function ItemUser({ selected = false }) {
           <Dropdown
             trigger={["click"]}
             dropdownRender={() => (
-              <div>
-                <div className="bg-[#121212] flex flex-col rounded-md p-2 min-w-[170px]">
-                  <div className="text-red-500 cursor-pointer w-full h-full p-1 rounded-sm hover:bg-red-500 hover:text-white duration-300 flex items-center">
-                    <p>Remove Friend</p>
-                  </div>
+              <div className="bg-[#121212] flex flex-col rounded-md p-2 min-w-[170px] gap-1">
+                <div className="text-[#a4a4a4]  cursor-pointer w-full h-full px-2 py-1 rounded-sm hover:bg-indigo-500 hover:text-white duration-300 flex items-center">
+                  <p>Start Video Call</p>
+                </div>
+                <div className="text-[#a4a4a4]  cursor-pointer w-full h-full px-2 py-1 rounded-sm hover:bg-indigo-500 hover:text-white duration-300 flex items-center">
+                  <p>Start Voice Call</p>
+                </div>
+                <div className="text-red-500 cursor-pointer w-full h-full px-2 py-1 rounded-sm hover:bg-red-500 hover:text-white duration-300 flex items-center">
+                  <p>Remove Friend</p>
                 </div>
               </div>
             )}
@@ -67,4 +90,4 @@ export default function ItemUser({ selected = false }) {
       </div>
     </div>
   );
-}
+});

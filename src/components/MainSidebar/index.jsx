@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useContext, memo } from "react";
+import { AppContext } from "@/context/AppContext";
 
 import SidebarItem from "@/components/MainSidebar/SidebarItem";
 
-export default function MainSidebar({ path }) {
+export default memo(function MainSidebar({ path }) {
   return (
     <nav
       className="flex flex-col bg-[#1E1E1E] min-w-[72px] relative pt-3 gap-2 items-center overflow-hidden"
@@ -37,4 +38,4 @@ export default function MainSidebar({ path }) {
       />
     </nav>
   );
-}
+});

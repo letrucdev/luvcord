@@ -1,7 +1,6 @@
 "use client";
-import { useContext } from "react";
+import { useContext, memo } from "react";
 import { usePathname } from "next/navigation";
-import { useSelectedLayoutSegment } from "next/navigation";
 
 import { AppContext } from "@/context/AppContext";
 import MainBody from "@/components/MainBody";
@@ -9,7 +8,8 @@ import ChatBody from "@/components/ChatBody";
 
 import { MessageOutlined } from "@ant-design/icons";
 
-export default function ChannelPage() {
+export default memo(function ChannelPage() {
+
   const context = useContext(AppContext);
   const pathname = usePathname().split("/");
 
@@ -65,7 +65,10 @@ export default function ChannelPage() {
   ];
 
   return (
-    <div className="flex h-screen w-full bg-[#333333] text-white overflow-hidden">
+    <div
+      className="flex h-screen w-full bg-[#333333] text-white overflow-hidden"
+      onContextMenu={(e) => e.preventDefault()}
+    >
       {pathname[2] !== "@me" ? (
         <ChatBody
           headerTitle={pathname[3]}
@@ -78,4 +81,4 @@ export default function ChannelPage() {
       )}
     </div>
   );
-}
+});

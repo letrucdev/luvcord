@@ -1,36 +1,14 @@
+import { useContext, memo } from "react";
+import { AppContext } from "@/context/AppContext";
+
 import { Tooltip } from "antd";
 import { UserOutlined, SketchOutlined, PlusOutlined } from "@ant-design/icons";
 
 import ItemNavigate from "@/components/MenuSidebar/MenuDM/ItemNavigate";
 import ItemUser from "@/components/MenuSidebar/MenuDM/ItemUser";
 
-export default function MenuDM({ path }) {
-  function UserContructor(id, name, avatar, status) {
-    this.id = id;
-    this.name = name;
-    this.avatar = avatar;
-    this.status = status;
-  }
-
-  const user = new UserContructor(
-    "8981291020",
-    "letruc",
-    "https://cdn.discordapp.com/avatars/409219043535355904/5c333b6fd660c08fb2b517a07844d8c4.webp?size=32",
-    "Developer JS"
-  );
-
-  const user2 = new UserContructor(
-    "8981291030",
-    "A I F O S",
-    "https://cdn.discordapp.com/avatars/741940555646500874/8685dc90dfb4ecfeff8f0f0e59a0d187.webp?size=32",
-    "Piggy 🐷"
-  );
-
-  const user3 = new UserContructor(
-    "8981291010",
-    "KB",
-    "https://cdn.discordapp.com/avatars/600923556301373440/436f55d1c6129d4978909821106e8a2b.webp?size=32"
-  );
+export default memo(function MenuDM({ path }) {
+  const { dmUserList } = useContext(AppContext);
 
   return (
     <div className="flex flex-col overflow-x-hidden overflow-y-auto h-full">
@@ -68,23 +46,18 @@ export default function MenuDM({ path }) {
 
       {/* Item User */}
       <div className="flex flex-col grow gap-1">
-        <ItemUser
-          user={user}
-          selected={path[3] === user.id}
-          path={`/channels/@me/${user.id}`}
-        />
-        <ItemUser
-          user={user2}
-          selected={path[3] === user2.id}
-          path={`/channels/@me/${user2.id}`}
-        />
-        <ItemUser
-          user={user3}
-          selected={path[3] === user3.id}
-          path={`/channels/@me/${user3.id}`}
-        />
+        {dmUserList.map((user) => {
+          return (
+            <ItemUser
+              key={user.id}
+              user={user}
+              selected={path[3] === user.id}
+              path={`/channels/@me/${user.id}`}
+            />
+          );
+        })}
       </div>
       {/* End Item User */}
     </div>
   );
-}
+});

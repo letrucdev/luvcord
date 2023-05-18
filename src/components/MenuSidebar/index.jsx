@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext } from "react";
+import { useContext, memo } from "react";
 import { usePathname } from "next/navigation";
 
 import { RightOutlined } from "@ant-design/icons";
@@ -12,12 +12,14 @@ import MenuServer from "@/components/MenuSidebar/MenuServer";
 
 import { AppContext } from "@/context/AppContext";
 
-export default function UserSidebar({ path }) {
+export default memo(function UserSidebar({ path }) {
   const context = useContext(AppContext);
-  
 
   return (
-    <div className="flex flex-col w-60 min-w-[240px] overflow-hidden bg-[#272727] h-full">
+    <div
+      className="flex flex-col w-60 min-w-[240px] overflow-hidden bg-[#272727] h-full"
+      onContextMenu={(e) => e.preventDefault()}
+    >
       <div className="flex flex-col h-full overflow-hidden relative">
         {context.MenuSidebarItems.length > 0 ? (
           <>
@@ -46,4 +48,4 @@ export default function UserSidebar({ path }) {
       </div>
     </div>
   );
-}
+});
