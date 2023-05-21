@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, useRef } from "react";
+import { useState, useEffect, useContext, useRef, memo } from "react";
 
 import { Result } from "antd";
 import {
@@ -10,7 +10,7 @@ import {
 import { AppContext } from "@/context/AppContext";
 import ItemUser from "@/components/MainBody/ItemUser";
 
-export default function UsersList({ title, count, nullTitle }) {
+export default memo(function UsersList({ title, nullTitle, users = [] }) {
   const context = useContext(AppContext);
   const inputSearchRef = useRef();
   const [searchInput, setSearchInput] = useState("");
@@ -31,7 +31,7 @@ export default function UsersList({ title, count, nullTitle }) {
     }
   }, [searchInput]);
 
-  return count > 0 ? (
+  return users.length > 0 ? (
     <div className={`flex flex-col overflow-hidden w-full relative gap-4`}>
       {/* Input Search  */}
       <div className="flex justify-center items-center px-4 mt-3">
@@ -55,17 +55,16 @@ export default function UsersList({ title, count, nullTitle }) {
       <span className="flex items-center  gap-2 select-none px-4">
         <p className="text-[#a4a4a4] text-xs uppercase">{title}</p>
         <hr className="w-1 h-[2px] bg-[#a4a4a4] border-none" />
-        <p className="text-[#a4a4a4] text-xs uppercase">{count}</p>
+        <p className="text-[#a4a4a4] text-xs uppercase">{users.length}</p>
       </span>
       {/* End Users Count */}
 
       {/* User List */}
       <div className="overflow-y-auto overflow-x-hidden flex px-4">
         <div className="flex flex-col w-full h-full max-h-full">
-          <ItemUser />
-          <ItemUser />
-          <ItemUser />
-          <ItemUser />
+          {users.map((user) => (
+            <ItemUser user={user} key={user.id} />
+          ))}
         </div>
       </div>
       {/* End User List */}
@@ -78,4 +77,4 @@ export default function UsersList({ title, count, nullTitle }) {
       />
     </div>
   );
-}
+});

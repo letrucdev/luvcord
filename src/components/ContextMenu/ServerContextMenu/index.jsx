@@ -1,8 +1,20 @@
+import Link from "next/link";
 import { Fragment, useContext, useRef, useEffect, useState, memo } from "react";
 import { AppContext } from "@/context/AppContext";
 import ContextItem from "@/components/ContextMenu/ContextItem";
 
-export default memo(function MyContextMenu() {
+export default memo(function ServerContextMenu() {
+  const serverContextMenu = [
+    { group: [{ id: 1, title: "Invite People" }] },
+    {
+      group: [
+        { id: 2, title: "Privacy Settings" },
+        { id: 3, title: "Edit Server Profile" },
+      ],
+    },
+    { group: [{ id: 4, title: "Copy Server ID" }] },
+  ]; // Server Context Menu
+
   const MenuRef = useRef();
   const { contextMenu } = useContext(AppContext);
   const [posX, setPosX] = useState();
@@ -42,22 +54,23 @@ export default memo(function MyContextMenu() {
       onContextMenu={(e) => e.preventDefault()}
       onMouseLeave={() => setFocusItem()}
     >
-      {contextMenu.itemList.map((item, indexParent) => (
-        <Fragment key={indexParent}>
-          {item.group.map((item, index) => (
-            <ContextItem
-              onClick={() => item?.click(contextMenu.user.id)}
-              title={item.title}
-              icon={item.icon}
-              key={`${indexParent}-${index}`}
-              items={item.children}
-              isFocus={`${indexParent}-${index}` === focusItem}
-              onFocus={() => {
-                setFocusItem(`${indexParent}-${index}`);
-              }}
-            />
-          ))}
-          {indexParent < contextMenu.itemList.length - 1 && (
+      {serverContextMenu.map((item, index) => (
+        <Fragment key={index}>
+          {item.group.map((item) => {
+            return (
+              <ContextItem
+                title={item.title}
+                icon={item.icon}
+                key={item.id}
+                items={item.children}
+                isFocus={item.id === focusItem}
+                onFocus={() => {
+                  setFocusItem(item.id);
+                }}
+              />
+            );
+          })}
+          {index < serverContextMenu.length - 1 && (
             <div className="w-full h-[1px] bg-[#383838] my-1"></div>
           )}
         </Fragment>

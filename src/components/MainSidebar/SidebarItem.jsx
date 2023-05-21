@@ -9,7 +9,7 @@ import { Tooltip } from "antd";
 import { HomeFilled, PlusOutlined } from "@ant-design/icons";
 
 import { AppContext } from "@/context/AppContext";
-import { serverContextMenu } from "@/components/ContextMenu/ContextItemList";
+import ServerContextMenu from "@/components/ContextMenu/ServerContextMenu";
 
 export default memo(function SidebarItem({
   selected = false,
@@ -28,7 +28,7 @@ export default memo(function SidebarItem({
       isShow: true,
       positionX: pageX,
       positionY: pageY,
-      itemList: serverContextMenu,
+      menu: <ServerContextMenu />,
     });
   };
 

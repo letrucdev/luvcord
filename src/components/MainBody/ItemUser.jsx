@@ -1,16 +1,23 @@
 "use client";
 
 import React, { useContext, memo } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 import { AppContext } from "@/context/AppContext";
-import { dmContextMenu } from "@/components/ContextMenu/ContextItemList";
+import UserContextMenu from "@/components/ContextMenu/UserContextMenu";
 
 import { Tooltip, Dropdown } from "antd";
 import { MessageFilled, MoreOutlined } from "@ant-design/icons";
 
-export default memo(function ItemUser() {
+export default memo(function ItemUser({ user = {} }) {
+  const router = useRouter();
   const { setContextMenu } = useContext(AppContext);
+
+  const handleOpenDM = () => {
+    router.push(`/channels/@me/${user.id}`);
+  };
+
   const onRightClick = (e) => {
     e.preventDefault();
     const { pageX, pageY } = e;
@@ -18,7 +25,7 @@ export default memo(function ItemUser() {
       isShow: true,
       positionX: pageX,
       positionY: pageY,
-      itemList: dmContextMenu,
+      menu: <UserContextMenu user={user} />,
     });
   };
 
@@ -29,12 +36,12 @@ export default memo(function ItemUser() {
         onContextMenu={onRightClick}
       >
         {/* User */}
-        <div className="flex gap-2 w-full items-center">
+        <div className="flex gap-2 w-full items-center" onClick={handleOpenDM}>
           <div className="flex relative">
             <div className="flex items-center justify-center min-w-[32px] min-h-[32px]">
               <Image
                 className="rounded-3xl border-none"
-                src={`https://cdn.discordapp.com/avatars/409219043535355904/5c333b6fd660c08fb2b517a07844d8c4.webp?size=32`}
+                src={user.avatar}
                 width={32}
                 height={32}
                 alt="User Avatar"
@@ -47,10 +54,10 @@ export default memo(function ItemUser() {
             <p
               className={`text-slate-200 duration-300 text-ellipsis whitespace-nowrap overflow-hidden`}
             >
-              letruc
+              {user.name}
             </p>
             <p className="text-[#a4a4a4] text-xs duration-300 text-ellipsis whitespace-nowrap overflow-hidden">
-              Developer JS
+              {user.status}
             </p>
           </div>
         </div>
@@ -59,7 +66,10 @@ export default memo(function ItemUser() {
         {/* Options */}
         <div className="flex gap-1 justify-center items-center">
           <Tooltip placement="top" title={`Message`}>
-            <div className="flex items-center justify-center bg-[#272727] p-2 rounded-full group-hover:bg-[#1E1E1E] w-9 h-9">
+            <div
+              className="flex items-center justify-center bg-[#272727] p-2 rounded-full group-hover:bg-[#1E1E1E] w-9 h-9"
+              onClick={handleOpenDM}
+            >
               <MessageFilled className="text-center leading-none text-[#a4a4a4] group-hover:text-[#ffffff] duration-300 cursor-pointer" />
             </div>
           </Tooltip>

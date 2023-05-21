@@ -1,13 +1,13 @@
 "use client";
 
-import { useContext } from "react";
+import { useContext, memo } from "react";
 
 import { usePathname } from "next/navigation";
 import { MessageOutlined } from "@ant-design/icons";
 import { AppContext } from "@/context/AppContext";
 import ChatBody from "@/components/ChatBody";
 
-export default function Page() {
+export default memo(function Page() {
   const pathname = usePathname().split("/");
   return (
     <ChatBody
@@ -17,4 +17,4 @@ export default function Page() {
       }
     />
   );
-}
+});

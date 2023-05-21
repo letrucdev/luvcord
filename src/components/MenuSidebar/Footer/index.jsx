@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-
-import { Tooltip } from "antd";
+import { memo } from "react";
 import {
   AudioFilled,
   SettingFilled,
@@ -11,7 +10,7 @@ import {
 
 import ControlButton from "@/components/MenuSidebar/Footer/ControlButton";
 
-export default function FooterUserSidebar() {
+export default memo(function FooterUserSidebar() {
   return (
     <div className="flex w-full p-1 bg-[#232323] grow-0 justify-center items-center gap-2">
       <div className="flex justify-center items-center w-full gap-2 hover:bg-[#333333] p-1 duration-300 cursor-pointer rounded-md">
@@ -55,4 +54,4 @@ export default function FooterUserSidebar() {
       </div>
     </div>
   );
-}
+});

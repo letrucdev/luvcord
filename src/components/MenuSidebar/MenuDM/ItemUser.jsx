@@ -6,6 +6,7 @@ import { AppContext } from "@/context/AppContext";
 import { dmContextMenu } from "@/components/ContextMenu/ContextItemList";
 
 import { CloseOutlined } from "@ant-design/icons";
+import UserContextMenu from "@/components/ContextMenu/UserContextMenu";
 
 export default memo(function ItemUser({ user, path, selected }) {
   const { dmUserList, setMembersList, setDMUserList, setContextMenu } =
@@ -24,7 +25,7 @@ export default memo(function ItemUser({ user, path, selected }) {
       isShow: true,
       positionX: pageX,
       positionY: pageY,
-      itemList: dmContextMenu,
+      menu: <UserContextMenu user={user} />,
     });
   };
 
@@ -48,7 +49,6 @@ export default memo(function ItemUser({ user, path, selected }) {
                 width={32}
                 height={32}
                 alt="User Avatar"
-                loading="lazy"
               />
             </div>
             <div className="w-2 h-2 bg-green-400 rounded-full absolute bottom-0 right-0"></div>

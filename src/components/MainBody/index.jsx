@@ -9,7 +9,7 @@ import UsersList from "@/components/UsersList";
 import { AppContext } from "@/context/AppContext";
 
 export default memo(function MainBody({ type = 0, headerTitle, buttons }) {
-  const context = useContext(AppContext);
+  const { headerItemSelect, friendList } = useContext(AppContext);
   const handleHeaderType = (type) => {
     switch (type) {
       case 0:
@@ -37,13 +37,13 @@ export default memo(function MainBody({ type = 0, headerTitle, buttons }) {
   };
 
   const handleSelectMenu = () => {
-    switch (context.headerItemSelect) {
+    switch (headerItemSelect) {
       case "online":
         return (
           <UsersList
             key={1}
+            users={friendList}
             title={"Online"}
-            count={4}
             nullTitle={`There is no online friends.`}
           />
         );
@@ -52,7 +52,6 @@ export default memo(function MainBody({ type = 0, headerTitle, buttons }) {
           <UsersList
             key={2}
             title={"All Friends"}
-            count={4}
             nullTitle={`There is no friends.`}
           />
         );
@@ -61,7 +60,6 @@ export default memo(function MainBody({ type = 0, headerTitle, buttons }) {
           <UsersList
             key={3}
             title={"Pending"}
-            count={0}
             nullTitle={`There is no pending friend requests.`}
           />
         );
